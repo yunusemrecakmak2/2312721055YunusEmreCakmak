@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+
+struct Urun {
+    std::string isim;
+    int stok;
+};
+
+ 
+
+
+
+int main() {
+    
+	 setlocale(LC_ALL,"Turkish");
+
+	
+	
+	Urun urunler[10];
+    int urunSayisi = 0;
+    int secim;
+
+    do {
+        std::cout << "\n1. Ürün Ekle\n2. Ürünleri Listele\n3. Çıkış\nSeçiminiz: ";
+        std::cin >> secim;
+
+        switch (secim) {
+            case 1: {
+                if (urunSayisi < 10) {
+                    std::cout << "Ürün ismini girin: ";
+                    std::cin >> urunler[urunSayisi].isim;
+                    std::cout << "Stok miktarını girin: ";
+                    std::cin >> urunler[urunSayisi].stok;
+                    urunSayisi++;
+                    std::cout << "Ürün eklendi!\n";
+                } else {
+                    std::cout << "Ürün listesi dolu!\n";
+                }
+                break;
+            }
+            case 2: {
+                std::cout << "\nÜrünler:\n";
+                for (int i = 0; i < urunSayisi; i++) {
+                    std::cout << i + 1 << ". " << urunler[i].isim << " - Stok: " << urunler[i].stok << "\n";
+                }
+                break;
+            }
+            case 3:
+                std::cout << "Çıkış yapılıyor...\n";
+                break;
+            default:
+                std::cout << "Geçersiz seçim!\n";
+        }
+    } while (secim != 3);
+
+    return 0;
+}
